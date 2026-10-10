@@ -10,5 +10,10 @@ WordPress 7.x(公式イメージ `wordpress:php8.5-apache`)
 | 用途 | URL |
 |---|---|
 | サイト | http://localhost:8080 |
-| 管理画面 | http://localhost:8080/wp-admin (admin / admin) |
+| 管理画面 | http://localhost:8080/wp-admin |
 | メール確認 (Mailpit) | http://localhost:8025 |
+
+### 管理者アカウント
+
+ID: admin
+PASS: admin
