@@ -18,7 +18,7 @@ wp-content/*.log
 wp-content/index.php
 
 # Plugins / themes: ignore everything except our own.
-# (Default plugins and themes are copied in on first start.)
+# (Default plugins and themes are copied in by .devcontainer/post-create.sh.)
 # To track your own, add e.g.:
 #   !wp-content/plugins/my-plugin/
 #   !wp-content/themes/my-theme/

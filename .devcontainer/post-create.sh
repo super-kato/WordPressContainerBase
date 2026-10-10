@@ -11,10 +11,11 @@ for _ in $(seq 1 60); do
   sleep 1
 done
 
-# wp-content はリポジトリからバインドマウントされているため、標準のディレクトリを用意
-mkdir -p wp-content/plugins wp-content/themes wp-content/uploads
-# Apache(www-data)がアップロードできるよう、uploads の所有者を変更
-chown -R www-data:www-data wp-content/uploads 2>/dev/null || true
+# イメージ同梱のデフォルトテーマ/プラグインで未配置のものだけイメージからコピーする
+mkdir -p wp-content/uploads
+cp -an /usr/src/wordpress/wp-content/. wp-content/
+# Apache(www-data)が書き込めるよう、所有者を変更
+chown -R www-data:www-data wp-content 2>/dev/null || true
 
 # WP-CLI のラッパーコマンド `wpr` を作成
 cat > /usr/local/bin/wpr <<'WPR'
