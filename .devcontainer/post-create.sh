@@ -35,9 +35,10 @@ if ! wpr core is-installed 2>/dev/null; then
     --admin_password=admin \
     --admin_email=admin@example.com \
     --skip-email
-  wpr language core install ja --activate || true
   wpr option update timezone_string Asia/Tokyo
 fi
+
+wpr language core install ja --activate || true
 
 # Composer の開発用パッケージ(WordPress のスタブなど)を入れる。
 if [ -f /workspace/composer.json ]; then
