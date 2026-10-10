@@ -3,8 +3,9 @@
 WordPress 7.x(公式イメージ `wordpress:php8.5-apache`)
 
 ## 使い方
-1. VS Code で開き、「Reopen in Container」。
-2. 初回起動時に WordPress が自動インストールされる(日本語・Asia/Tokyo)。
+
+1. VS Codeで開き「Reopen in Container」
+2. 初回起動時にWordPressがインストールされる
 
 | 用途 | URL |
 |---|---|
