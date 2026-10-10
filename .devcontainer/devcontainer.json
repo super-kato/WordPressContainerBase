@@ -1,0 +1,66 @@
+{
+  "name": "WordPress",
+  "dockerComposeFile": "docker-compose.yml",
+  "service": "wordpress",
+  "workspaceFolder": "/workspace",
+  "shutdownAction": "stopCompose",
+  "forwardPorts": [
+    8080,
+    8025
+  ],
+  "portsAttributes": {
+    "8080": {
+      "label": "WordPress"
+    },
+    "8025": {
+      "label": "Mailpit"
+    }
+  },
+  "postCreateCommand": "bash .devcontainer/post-create.sh",
+  "postAttachCommand": "bash .devcontainer/info.sh",
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "xdebug.php-debug",
+        "bmewburn.vscode-intelephense-client",
+        "wordpresstoolbox.wordpress-toolbox",
+        "EditorConfig.EditorConfig",
+        "Anthropic.claude-code",
+        "eamodio.gitlens"
+      ],
+      "settings": {
+        "php.validate.executablePath": "/usr/local/bin/php",
+        "workbench.colorCustomizations": {
+          "activityBar.activeBackground": "#146a47",
+          "activityBar.activeBorder": "#e7e7e7",
+          "activityBar.background": "#146a47",
+          "activityBar.foreground": "#e7e7e7",
+          "activityBar.inactiveForeground": "#e7e7e799",
+          "activityBarBadge.background": "#48146b",
+          "activityBarBadge.foreground": "#e7e7e7",
+          "activityBarTop.activeBackground": "#146a47",
+          "activityBarTop.activeBorder": "#e7e7e7",
+          "activityBarTop.background": "#146a47",
+          "activityBarTop.foreground": "#e7e7e7",
+          "activityBarTop.inactiveForeground": "#e7e7e799",
+          "commandCenter.border": "#e7e7e799",
+          "commandCenter.foreground": "#e7e7e7",
+          "sash.hoverBorder": "#146a47",
+          "statusBar.background": "#0c3f2a",
+          "statusBar.debuggingBackground": "#0c3f2a",
+          "statusBar.debuggingForeground": "#e7e7e7",
+          "statusBar.foreground": "#e7e7e7",
+          "statusBar.inactiveBackground": "#0c3f2a",
+          "statusBarItem.hoverBackground": "#146a47",
+          "statusBarItem.remoteBackground": "#9d44db",
+          "statusBarItem.remoteForeground": "#e7e7e7",
+          "titleBar.activeBackground": "#0c3f2a",
+          "titleBar.activeForeground": "#e7e7e7",
+          "titleBar.inactiveBackground": "#0c3f2a99",
+          "titleBar.inactiveForeground": "#e7e7e799"
+        },
+        "intelephense.files.maxSize": 10000000
+      }
+    }
+  }
+}

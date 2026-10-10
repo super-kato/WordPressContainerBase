@@ -1,0 +1,28 @@
+# OS
+.DS_Store
+
+# Secrets / local env
+.env
+.env.*
+
+# Dependencies
+vendor/
+node_modules/
+
+# WordPress runtime files
+wp-content/uploads/
+wp-content/upgrade/
+wp-content/cache/
+wp-content/languages/
+wp-content/*.log
+wp-content/index.php
+
+# Plugins / themes: ignore everything except our own.
+# (Default plugins and themes are copied in on first start.)
+# To track your own, add e.g.:
+#   !wp-content/plugins/my-plugin/
+#   !wp-content/themes/my-theme/
+wp-content/plugins/*
+!wp-content/plugins/.gitkeep
+wp-content/themes/*
+!wp-content/themes/.gitkeep

@@ -1,0 +1,50 @@
+services:
+  wordpress:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    depends_on:
+      db:
+        condition: service_healthy
+    ports:
+      - "8080:80"
+    environment:
+      WORDPRESS_DB_HOST: db
+      WORDPRESS_DB_NAME: wordpress
+      WORDPRESS_DB_USER: wordpress
+      WORDPRESS_DB_PASSWORD: wordpress
+      WORDPRESS_DEBUG: "1"
+      WORDPRESS_CONFIG_EXTRA: "require '/usr/local/etc/wp-config-extra.php';"
+      WP_SITE_URL: http://localhost:8080
+      XDEBUG_MODE: "off"
+    volumes:
+      - ..:/workspace:cached
+      - wp-core:/var/www/html
+      - ./wp-config-extra.php:/usr/local/etc/wp-config-extra.php:ro
+      - ../wp-content:/var/www/html/wp-content
+
+  db:
+    image: mariadb:11
+    restart: unless-stopped
+    environment:
+      MARIADB_DATABASE: wordpress
+      MARIADB_USER: wordpress
+      MARIADB_PASSWORD: wordpress
+      MARIADB_ROOT_PASSWORD: root
+    volumes:
+      - db-data:/var/lib/mysql
+    healthcheck:
+      test: ["CMD", "healthcheck.sh", "--connect", "--innodb_initialized"]
+      interval: 5s
+      timeout: 5s
+      retries: 20
+
+  mailpit:
+    image: axllent/mailpit
+    restart: unless-stopped
+    ports:
+      - "8025:8025"
+
+volumes:
+  wp-core:
+  db-data:
